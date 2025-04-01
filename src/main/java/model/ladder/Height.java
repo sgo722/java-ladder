@@ -12,21 +12,13 @@ public class Height {
     private void validate(String height){
         // 높이 검증
         validateNotBlank(height);
-        validatePositiveNumber(height);
+        validateNumber(height);
+        validatePositive(Integer.parseInt(height));
     }
 
     private void validateNotBlank(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("[ERROR] 빈 값이나 공백을 입력할 수 없습니다.");
-        }
-    }
-
-    private void validatePositiveNumber(String height){
-        validateNumber(height);
-        try{
-            validatePositive(Integer.parseInt(height));
-        }catch(NumberFormatException e){
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력 가능합니다.");
         }
     }
 
