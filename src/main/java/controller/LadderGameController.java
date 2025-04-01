@@ -21,5 +21,15 @@ public class LadderGameController {
         Height height = new Height(inputView.inputLadderMaxHeight());
 
         Lines lines = new Lines(personNames.getCount(), height.getHeight());
+
+        printSadari(personNames, height, lines);
+    }
+
+    private void printSadari(PersonNames personNames, Height height, Lines lines) {
+        outputView.printPersonNames(personNames.getPersonNames());
+
+        for(int floor = 0; floor < height.getHeight(); floor++) {
+            outputView.printSadari(lines.getPoints(floor));
+        }
     }
 }

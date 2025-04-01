@@ -6,7 +6,6 @@ import java.util.List;
 public class Lines {
     // Line의 일급 컬렉션
     private final List<Line> lines;
-    // 라인을 만든다. 라인을 체크한다.
 
     public Lines(int personCount, int height){
         lines = makeLines(personCount, height);
@@ -14,14 +13,15 @@ public class Lines {
 
     private List<Line> makeLines(int personCount, int height) {
         List<Line> lines = new ArrayList<>();
+
         for (int i = 0; i < height; i++) {
             lines.add(new Line(personCount));
         }
+
         return lines;
     }
 
-    public Lines(List<Line> lines) {
-        this.lines = lines;
+    public List<Boolean> getPoints(int floor) {
+        return lines.get(floor).getPoints();
     }
-    // 라인을 검사한다.
 }

@@ -9,13 +9,16 @@ public class Height {
         this.height = Integer.parseInt(height);
     }
 
-    public Height(int height) {
-        this.height = height;
-    }
-
     private void validate(String height){
         // 높이 검증
+        validateNotBlank(height);
         validatePositiveNumber(height);
+    }
+
+    private void validateNotBlank(String name) {
+        if (name == null || name.trim().isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 빈 값이나 공백을 입력할 수 없습니다.");
+        }
     }
 
     private void validatePositiveNumber(String height){

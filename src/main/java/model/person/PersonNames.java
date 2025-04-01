@@ -1,9 +1,7 @@
 package model.person;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class PersonNames {
 
@@ -25,6 +23,15 @@ public class PersonNames {
         }
     }
 
+    private void validateNoDuplicates(String input) {
+        String[] personNames = input.split(",");
+
+        Set<String> uniqueValues = new HashSet<>(Arrays.asList(personNames));
+        if (uniqueValues.size() != personNames.length) {
+            throw new IllegalArgumentException("[ERROR] 중복된 값이 존재할 수 없습니다.");
+        }
+    }
+
     private ArrayList<PersonName> parseNames(String personNames) {
         String[] splitPersonNames = personNames.split(",");
 
@@ -36,20 +43,17 @@ public class PersonNames {
         return parts;
     }
 
-    private void validateNoDuplicates(String input) {
-        String[] personNames = input.split(",");
-
-        Set<String> uniqueValues = new HashSet<>(Arrays.asList(personNames));
-        if (uniqueValues.size() != personNames.length) {
-            throw new IllegalArgumentException("[ERROR] 중복된 값이 존재할 수 없습니다.");
-        }
-    }
-
     public int getCount(){
         return personNames.size();
     }
 
     public String getName(int index){
         return personNames.get(index).getName();
+    }
+
+    public List<String> getPersonNames(){
+        return personNames.stream()
+                .map(PersonName::getName)
+                .collect(Collectors.toList());
     }
 }
