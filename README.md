@@ -20,15 +20,11 @@
 4. 사다리를 출력한다.
 
 # 첫 번쨰 구조
-              LaddersService(사다리 게임 실행)
-                          |
-                  Ladders(사다리 일급컬렉션)
-                          |
-                      Ladder(사다리 실행한다)
-                      /               \
-    PersonName(사다리 주인을 생성한다)  Lines(다리를 체크한다, 다리를 만든다.)
-                                     |
-                            Line(다리를 체크한다)
+              LadderGameController(사다리 게임 제어)
+                          /      \
+                  PersonName(사람)  Lines(사다리 일급컬렉션)
+                                    |
+                                 Line(사다리 실행한다)
 
 
 # 고민
