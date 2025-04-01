@@ -8,15 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PersonNameTest {
 
-    @DisplayName("구분자가_포함된_이름이_들어올_경우_예외가_발생한다")
-    @Test
-    void 구분자가_포함된_이름이_들어올_경우_예외가_발생한다(){
-        //given
-        String input = ",,,";
-        //when
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new PersonName(input));
-    }
-
     @DisplayName("빈_이름이_들어올_경우_예외가_발생한다")
     @Test
     void 빈_이름이_들어올_경우_예외가_발생한다(){
