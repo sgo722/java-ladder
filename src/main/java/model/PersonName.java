@@ -1,10 +1,9 @@
 package model;
 
 public class PersonName {
+    private final String presonName;
 
-    private final String personName;
-
-    public PersonName(String personName) {
-        this.personName = personName;
+    public PersonName(String presonName) {
+        this.presonName = presonName;
     }
 }

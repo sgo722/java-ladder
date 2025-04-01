@@ -8,14 +8,13 @@ public class Lines {
     private final List<Line> lines;
     // 라인을 만든다. 라인을 체크한다.
 
-
-    public Lines(int personCount){
-        lines = makeLines(personCount);
+    public Lines(int personCount, int height){
+        lines = makeLines(personCount, height);
     }
 
-    private List<Line> makeLines(int personCount) {
+    private List<Line> makeLines(int personCount, int height) {
         List<Line> lines = new ArrayList<>();
-        for (int i = 0; i < personCount; i++) {
+        for (int i = 0; i < height; i++) {
             lines.add(new Line(personCount));
         }
         return lines;
@@ -25,6 +24,4 @@ public class Lines {
         this.lines = lines;
     }
     // 라인을 검사한다.
-
-
 }
