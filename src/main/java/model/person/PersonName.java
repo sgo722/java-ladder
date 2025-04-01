@@ -14,6 +14,7 @@ public class PersonName {
     private void validate(String name) {
         validateNotBlank(name);
         validateLength(name);
+        validateContainDelimiter(name);
     }
 
     private void validateNotBlank(String name) {
@@ -25,6 +26,12 @@ public class PersonName {
     private void validateLength(String name) {
         if (name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException("[ERROR] 이름은 최대 5글자 까지 입력 가능합니다.");
+        }
+    }
+
+    private void validateContainDelimiter(String name) {
+        if (name.contains(",")) {
+            throw new IllegalArgumentException("[ERROR] 이름에 쉼표(,)를 포함할 수 없습니다.");
         }
     }
 

@@ -1,8 +1,8 @@
 package controller;
 
-import model.person.Name;
 import model.ladder.Height;
 import model.ladder.Lines;
+import model.person.PersonNames;
 import view.InputView;
 import view.OutputView;
 
@@ -17,9 +17,9 @@ public class LadderGameController {
     }
 
     public void makeLadder() {
-        Name personName = new Name(inputView.inputPersonName());
+        PersonNames personNames = new PersonNames(inputView.inputPersonNames());
         Height height = new Height(inputView.inputLadderMaxHeight());
 
-        Lines lines = new Lines(personName, height);
+        Lines lines = new Lines(personNames.getCount(), height.getHeight());
     }
 }
