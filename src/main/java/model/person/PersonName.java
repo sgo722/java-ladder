@@ -30,7 +30,7 @@ public class PersonName {
         }
     }
 
-    public PersonNameDto toDto(){
-        return new PersonNameDto(name);
+    public String exportNameForView(){
+        return name;
     }
 }

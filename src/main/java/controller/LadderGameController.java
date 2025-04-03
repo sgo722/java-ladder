@@ -1,7 +1,9 @@
 package controller;
 
-import model.ladder.Height;
+import model.Height;
 import model.ladder.Lines;
+import model.mapper.LineMapper;
+import model.mapper.PersonMapper;
 import model.person.PersonNames;
 import view.InputView;
 import view.OutputView;
@@ -37,7 +39,7 @@ public class LadderGameController {
     }
 
     private void print(PersonNames personNames, Lines lines) {
-        outputView.printPersonNames(personNames.toDto());
-        outputView.printLadder(lines.toDto());
+        outputView.printPersonNames(new PersonMapper().toDto(personNames));
+        outputView.printLadder(new LineMapper().toDto(lines));
     }
 }

@@ -30,7 +30,7 @@ class PersonNameTest {
         //when
         PersonName personName = new PersonName(input);
         //then
-        Assertions.assertEquals(input, personName.getName());
+        Assertions.assertEquals(input, personName.exportNameForView());
     }
 
 }

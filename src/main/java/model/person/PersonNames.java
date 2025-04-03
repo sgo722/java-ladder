@@ -48,9 +48,7 @@ public class PersonNames {
         return personNames.size();
     }
 
-    public List<PersonNameDto> toDto() {
-        return personNames.stream()
-                .map(PersonName::toDto)
-                .toList();
+    public List<PersonName> getPersonNames() {
+        return Collections.unmodifiableList(personNames);
     }
 }

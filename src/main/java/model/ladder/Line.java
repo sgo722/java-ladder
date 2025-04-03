@@ -29,7 +29,7 @@ public class Line {
         return bridges;
     }
 
-    public LineDto toDto(){
-        return new LineDto(bridges);
+    public List<Boolean> exportBridgesForView() {
+        return Collections.unmodifiableList(bridges);
     }
 }

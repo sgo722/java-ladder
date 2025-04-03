@@ -22,9 +22,7 @@ public class Lines {
         return new Lines(lines);
     }
 
-    public List<LineDto> toDto(){
-        return lines.stream()
-                .map(Line::toDto)
-                .toList();
+    public List<Line> getLines(){
+        return lines;
     }
 }
