@@ -1,5 +1,7 @@
 package model.ladder;
 
+import model.dto.LineDto;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +23,9 @@ public class Lines {
         return lines;
     }
 
-    public List<Boolean> getPoints(int floor) {
-        return lines.get(floor).getPoints();
+    public List<LineDto> toDto(){
+        return lines.stream()
+                .map(Line::toDto)
+                .toList();
     }
 }

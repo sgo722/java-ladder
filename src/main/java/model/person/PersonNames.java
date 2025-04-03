@@ -1,7 +1,8 @@
 package model.person;
 
+import model.dto.PersonNameDto;
+
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class PersonNames {
 
@@ -35,25 +36,21 @@ public class PersonNames {
     private List<PersonName> parseNames(String personNames) {
         String[] splitPersonNames = personNames.split(",");
 
-        ArrayList<PersonName> parts = new ArrayList<>();
+        ArrayList<PersonName> parseNames = new ArrayList<>();
         for (String name : splitPersonNames) {
-            parts.add(new PersonName(name));
+            parseNames.add(new PersonName(name));
         }
 
-        return parts;
+        return parseNames;
     }
 
     public int getCount(){
         return personNames.size();
     }
 
-    public String getName(int index){
-        return personNames.get(index).getName();
-    }
-
-    public List<String> getPersonNames(){
+    public List<PersonNameDto> toDto() {
         return personNames.stream()
-                .map(PersonName::getName)
-                .collect(Collectors.toList());
+                .map(PersonName::toDto)
+                .toList();
     }
 }

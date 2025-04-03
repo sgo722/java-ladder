@@ -22,14 +22,12 @@ public class LadderGameController {
 
         Lines lines = new Lines(personNames.getCount(), height.getHeight());
 
-        print(personNames, height, lines);
+        print(personNames, lines);
     }
 
-    private void print(PersonNames personNames, Height height, Lines lines) {
-        outputView.printPersonNames(personNames.getPersonNames());
+    private void print(PersonNames personNames, Lines lines) {
+        outputView.printPersonNames(personNames.toDto());
 
-        for(int floor = 0; floor < height.getHeight(); floor++) {
-            outputView.printFloor(lines.getPoints(floor));
-        }
+        outputView.printLadder(lines.toDto());
     }
 }

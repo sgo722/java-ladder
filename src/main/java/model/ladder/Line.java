@@ -1,5 +1,6 @@
 package model.ladder;
 
+import model.dto.LineDto;
 import util.LineGenerator;
 import util.RandomBooleanGenerator;
 
@@ -8,27 +9,27 @@ import java.util.Collections;
 import java.util.List;
 
 public class Line {
-    private final List<Boolean> points;
+    private final List<Boolean> bridges;
     private final LineGenerator lineGenerator = new RandomBooleanGenerator();
 
     public Line(int personCount) {
-        points = makePoints(personCount);
+        bridges = makePoints(personCount);
     }
 
     private List<Boolean> makePoints(int personCount) {
-        List<Boolean> points = new ArrayList<>();
+        List<Boolean> bridges = new ArrayList<>();
 
         for (int bridgeIndex = 0; bridgeIndex < personCount - 1; bridgeIndex++) {
-            boolean isExist = bridgeIndex > 0 && points.get(bridgeIndex - 1);
+            boolean isExist = bridgeIndex > 0 && bridges.get(bridgeIndex - 1);
 
-            if (isExist) points.add(false);
-            if (!isExist) points.add(lineGenerator.tryGenerate());
+            if (isExist) bridges.add(false);
+            if (!isExist) bridges.add(lineGenerator.tryGenerate());
         }
 
-        return points;
+        return bridges;
     }
 
-    public List<Boolean> getPoints() {
-        return Collections.unmodifiableList(points);
+    public LineDto toDto(){
+        return new LineDto(bridges);
     }
 }
