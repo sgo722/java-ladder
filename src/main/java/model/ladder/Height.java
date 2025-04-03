@@ -10,7 +10,6 @@ public class Height {
     }
 
     private void validate(String height){
-        // 높이 검증
         validateNotBlank(height);
         validateNumber(height);
         validatePositive(Integer.parseInt(height));

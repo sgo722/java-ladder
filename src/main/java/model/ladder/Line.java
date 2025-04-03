@@ -12,7 +12,6 @@ public class Line {
     private final LineGenerator lineGenerator = new RandomBooleanGenerator();
 
     public Line(int personCount) {
-        // 라인에 좌표 값 선이 있는 유무를 판단하는 로직 추가
         points = makePoints(personCount);
     }
 
