@@ -27,7 +27,6 @@ public class LadderGameController {
 
     private void print(PersonNames personNames, Lines lines) {
         outputView.printPersonNames(personNames.toDto());
-
         outputView.printLadder(lines.toDto());
     }
 }
