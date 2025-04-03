@@ -19,7 +19,7 @@
          A2) Height와 PersonName을 포함하는 GameCondition을 만들고 주입하는 방식을 생각해봤는데, 이 방식은 GameCondtion과 Lines가 서로 관계를 맺게된다.
                 현재방식은 Height, PersonName, Lines가 서로 모르는 상태인데, GameCondition과 Lines가 서로 의존성이 생기는것에 대한 거부감이 있다.  
       4. 뷰로직은 뷰가 가져갔으면 좋겠다.  
-         A1)
+         A1) 
 
 2. 한글 주석
    1. 한글주석은 가독성을 향상시킬 수 있지만, 수정지점을 늘어날 수 있다는 현실적인 단점이 있습니다.
@@ -39,7 +39,7 @@
 4. 테스트
    1. 메서드명과 DisplayName 동일한거에 대한 고민해보기  
       A) 
-   2. Junit을 사용했는데, 왜 Assertions 썻어?  
+   2. Junit과 Assertions의 차이에 대해 고민해보기
       A) 
 
 5. 다형성
