@@ -1,5 +1,6 @@
 package model.ladder;
 
+import util.LineGenerator;
 import util.RandomBooleanGenerator;
 
 import java.util.ArrayList;
@@ -8,7 +9,7 @@ import java.util.List;
 
 public class Line {
     private final List<Boolean> points;
-    private final RandomBooleanGenerator randomBooleanGenerator = new RandomBooleanGenerator();
+    private final LineGenerator lineGenerator = new RandomBooleanGenerator();
 
     public Line(int personCount) {
         // 라인에 좌표 값 선이 있는 유무를 판단하는 로직 추가
@@ -19,10 +20,10 @@ public class Line {
         List<Boolean> points = new ArrayList<>();
 
         for (int i = 0; i < personCount - 1; i++) {
-            boolean canInstall = i > 0 && points.get(i - 1);
+            boolean isExist = i > 0 && points.get(i - 1);
 
-            if (canInstall) points.add(false);
-            if (!canInstall) points.add(randomBooleanGenerator.getRandomBoolean());
+            if (isExist) points.add(false);
+            if (!isExist) points.add(lineGenerator.tryGenerate());
         }
         return points;
     }
