@@ -9,6 +9,10 @@ public class Height {
         this.height = Integer.parseInt(height);
     }
 
+    public Height(int height){
+        this.height = height;
+    }
+
     private void validate(String height){
         validateNotBlank(height);
         validateNumber(height);
@@ -33,7 +37,11 @@ public class Height {
         }
     }
 
-    public int getHeight() {
-        return height;
+    public Height install(){
+        return new Height(this.height - 1);
+    }
+
+    public boolean canInstall () {
+        return this.height > 0;
     }
 }

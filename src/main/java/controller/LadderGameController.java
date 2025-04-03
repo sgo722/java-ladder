@@ -20,9 +20,20 @@ public class LadderGameController {
         PersonNames personNames = new PersonNames(inputView.inputPersonNames());
         Height height = new Height(inputView.inputLadderMaxHeight());
 
-        Lines lines = new Lines(personNames.getCount(), height.getHeight());
+        Lines lines = setLines(height, personNames);
 
         print(personNames, lines);
+    }
+
+    private static Lines setLines(Height height, PersonNames personNames) {
+        Lines lines = new Lines();
+
+        while(!height.canInstall()) {
+            lines = lines.addLine(personNames.getCount());
+            height = height.install();
+        }
+
+        return lines;
     }
 
     private void print(PersonNames personNames, Lines lines) {

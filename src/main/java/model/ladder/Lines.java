@@ -9,18 +9,17 @@ public class Lines {
     // Line의 일급 컬렉션
     private final List<Line> lines;
 
-    public Lines(int personCount, int height){
-        lines = makeLines(personCount, height);
+    public Lines(){
+        this.lines = new ArrayList<>();
     }
 
-    private List<Line> makeLines(int personCount, int height) {
-        List<Line> lines = new ArrayList<>();
+    public Lines(List<Line> lines) {
+        this.lines = lines;
+    }
 
-        for (int i = 0; i < height; i++) {
-            lines.add(new Line(personCount));
-        }
-
-        return lines;
+    public Lines addLine(int personCount) {
+        this.lines.add(new Line(personCount));
+        return new Lines(lines);
     }
 
     public List<LineDto> toDto(){
