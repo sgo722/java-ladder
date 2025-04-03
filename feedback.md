@@ -6,7 +6,7 @@
    3. LadderGameController
       1. printSadari 메서드 이름 변경
       2. line의 List<Boolean> 반환하는거 별로인 듯
-      3. Height왜 노출되어야하는지 모르곘음
+      3. Height 왜 노출되어야하는지 모르곘음
       4. 뷰로직은 뷰가 가져갔으면 좋겠다.
 
 2. 한글주석 어떤 것 같아

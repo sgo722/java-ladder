@@ -11,7 +11,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printSadari(List<Boolean> points) {
+    public void printFloor(List<Boolean> points) {
         System.out.print("     ");
         for(Boolean point : points) {
             if(point == true) {
