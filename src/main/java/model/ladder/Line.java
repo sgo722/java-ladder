@@ -19,12 +19,13 @@ public class Line {
     private List<Boolean> makePoints(int personCount) {
         List<Boolean> points = new ArrayList<>();
 
-        for (int i = 0; i < personCount - 1; i++) {
-            boolean isExist = i > 0 && points.get(i - 1);
+        for (int bridgeIndex = 0; bridgeIndex < personCount - 1; bridgeIndex++) {
+            boolean isExist = bridgeIndex > 0 && points.get(bridgeIndex - 1);
 
             if (isExist) points.add(false);
             if (!isExist) points.add(lineGenerator.tryGenerate());
         }
+
         return points;
     }
 

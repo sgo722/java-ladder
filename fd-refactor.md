@@ -32,7 +32,9 @@
          A) 지역변수를 활용해 로직이해를 조금 더 쉽게 만들었습니다.
       3. 랜덤생성기 인터페이스 지향해라  
          A1) LineGenerator 인터페이스를 만들고, RandomNumberGenerator를 구현체로 변경  
-         A2) LineGenerator 인터페이스가 가지는 메서드 명에 대해서 고민하게됌. generate와 tryGenerate 두개를 고민했고, 반환하는 값이 false일 수도 있으니 tryGenerate를 적용하게되었음.
+         A2) LineGenerator 인터페이스가 가지는 메서드 명에 대해서 고민하게됌. generate와 tryGenerate 두개를 고민했고, 반환하는 값이 false일 수도 있으니 tryGenerate를 적용했습니다.
+      4. for문 지역변수 i 쓰지말 것  
+         A1) makePoints의 반복문의 지역변수 i는 다리를 설치할 수 있는 포인트를 의미한다. connectionIndex, bridgeIndex, position을 고민해보다가 bridgeIndex가 와닿아서 적용했습니다.
 
 4. 테스트
    1. 메서드명과 DisplayName 동일한거에 대한 고민해보기  
