@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class PersonNames {
 
-    private final ArrayList<PersonName> personNames;
+    private final List<PersonName> personNames;
 
     public PersonNames(String personNames) {
         validate(personNames);
@@ -32,7 +32,7 @@ public class PersonNames {
         }
     }
 
-    private ArrayList<PersonName> parseNames(String personNames) {
+    private List<PersonName> parseNames(String personNames) {
         String[] splitPersonNames = personNames.split(",");
 
         ArrayList<PersonName> parts = new ArrayList<>();

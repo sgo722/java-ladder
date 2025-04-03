@@ -45,4 +45,4 @@
 5. 다형성
    1. PersonName
       1. 속성값에 인터페이스 씁시다.  
-         A)
+         A) ArrayList -> List로 변경했습니다.
