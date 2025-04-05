@@ -49,8 +49,8 @@
 1. 로직 분리[보류 - 답을 못찾아서 stash 처리]
    2. Line
       1. 다리 생성 로직을 어떻게 더 이쁘게 만들 수 있을까?
-         1. 검사 - 생성 방식 (현재)
-         2. 생성 - 검증 -> 재생성 or 반환
+         1. 검사 - 생성 방식 [메서드 분리로 해결]
+         2. 생성 - 검증 -> 재생성 or 반환 [적용 X]
             - 근데 validateBridge이런 메서드가 Line책임인가라고 생각했을때 아닌 것 같다.
             - validateLine은 어떤가? 이러면 Line책임이 맞는 것 같긴한데...
          3. Bridge라는 enum 타입을 만든다면 이를 어떻게 활용할 수 있을까?
@@ -59,7 +59,9 @@
                - Lines - Line - Bridges - Bridge ? Line과 Bridges가 뭐가 다른가? 쓸떼없이 의존성을 늘리는 느낌이다.
                   - Line : List<Bridge> bridges;
                   - Bridges : List<Bridge> bridges;
-         5. LineGenerator가 라인 생성 책임을 가져간다.
+         5. LineGenerator가 라인 생성 책임을 가져간다. [적용 O]
+            1. LineGenerator가 Line생성에 대한 책임을 가져가고, Line은 생성할 떄 검증을, LineGenerator는 생성하는 역할을 한다. Line과 LineGenerator의 의존성을 분리했다.
+            2. LineGenerator의 이름만보면 Line을 반환해야하는데, Line 객체의 필드값으로 있으니 어떻게 저장하지 고민하다 외부로부터 생성해야겠다는 생각이 들었다.
 
 2. DTO
    1. View만의 로직 분리
