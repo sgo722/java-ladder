@@ -1,13 +1,13 @@
-package model.line;
+package model.line.generator;
 
+import model.line.Bridge;
+import model.line.Line;
 import model.util.BooleanGenerator;
-import model.util.RandomBooleanGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-public class RandomLineGenerator implements LineGenerator{
+public class RandomLineGenerator implements LineGenerator {
 
     private final BooleanGenerator booleanGenerator;
 

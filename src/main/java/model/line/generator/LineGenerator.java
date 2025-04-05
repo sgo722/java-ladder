@@ -1,4 +1,6 @@
-package model.line;
+package model.line.generator;
+
+import model.line.Line;
 
 public interface LineGenerator {
 

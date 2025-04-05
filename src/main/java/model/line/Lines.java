@@ -1,5 +1,7 @@
 package model.line;
 
+import model.line.generator.LineGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 

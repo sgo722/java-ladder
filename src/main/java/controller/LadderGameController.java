@@ -1,9 +1,9 @@
 package controller;
 
 import model.Height;
-import model.line.LineGenerator;
+import model.line.generator.LineGenerator;
 import model.line.Lines;
-import model.line.RandomLineGenerator;
+import model.line.generator.RandomLineGenerator;
 import model.mapper.LineMapper;
 import model.mapper.PersonMapper;
 import model.person.PersonNames;
