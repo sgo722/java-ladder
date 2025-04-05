@@ -1,4 +1,4 @@
-package model.ladder;
+package model.line;
 
 import model.Height;
 import org.junit.jupiter.api.Assertions;

@@ -1,8 +1,8 @@
 package model.mapper;
 
 import model.dto.LineDto;
-import model.ladder.Line;
-import model.ladder.Lines;
+import model.line.Line;
+import model.line.Lines;
 
 import java.util.ArrayList;
 import java.util.List;

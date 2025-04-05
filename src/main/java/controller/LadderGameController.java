@@ -1,10 +1,13 @@
 package controller;
 
 import model.Height;
-import model.ladder.Lines;
+import model.line.LineGenerator;
+import model.line.Lines;
+import model.line.RandomLineGenerator;
 import model.mapper.LineMapper;
 import model.mapper.PersonMapper;
 import model.person.PersonNames;
+import model.util.RandomBooleanGenerator;
 import view.InputView;
 import view.OutputView;
 
@@ -21,17 +24,18 @@ public class LadderGameController {
     public void makeLadder() {
         PersonNames personNames = new PersonNames(inputView.inputPersonNames());
         Height height = new Height(inputView.inputLadderMaxHeight());
+        LineGenerator lineGenerator = new RandomLineGenerator(new RandomBooleanGenerator());
 
-        Lines lines = setLines(height, personNames);
+        Lines lines = setLadder(height, personNames, lineGenerator);
 
         print(personNames, lines);
     }
 
-    private static Lines setLines(Height height, PersonNames personNames) {
+    private static Lines setLadder(Height height, PersonNames personNames, LineGenerator lineGenerator) {
         Lines lines = new Lines();
 
-        while(!height.canInstall()) {
-            lines = lines.addLine(personNames.getCount());
+        while(height.canInstall()) {
+            lines = lines.addLine(personNames.getCount(), lineGenerator);
             height = height.install();
         }
 

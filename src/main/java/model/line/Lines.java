@@ -1,6 +1,4 @@
-package model.ladder;
-
-import model.dto.LineDto;
+package model.line;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,9 +15,9 @@ public class Lines {
         this.lines = lines;
     }
 
-    public Lines addLine(int personCount) {
+    public Lines addLine(int personCount, LineGenerator lineGenerator) {
         List<Line> newLines = new ArrayList<>(this.lines);
-        newLines.add(new Line(personCount));
+        newLines.add(lineGenerator.generate(personCount));
         return new Lines(newLines);
     }
 
