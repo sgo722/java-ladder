@@ -18,8 +18,9 @@ public class Lines {
     }
 
     public Lines addLine(int personCount) {
-        this.lines.add(new Line(personCount));
-        return new Lines(lines);
+        List<Line> newLines = new ArrayList<>(this.lines);
+        newLines.add(new Line(personCount));
+        return new Lines(newLines);
     }
 
     public List<Line> getLines(){

@@ -59,6 +59,7 @@
                - Lines - Line - Bridges - Bridge ? Line과 Bridges가 뭐가 다른가? 쓸떼없이 의존성을 늘리는 느낌이다.
                   - Line : List<Bridge> bridges;
                   - Bridges : List<Bridge> bridges;
+         5. LineGenerator가 라인 생성 책임을 가져간다.
 
 2. DTO
    1. View만의 로직 분리
@@ -98,3 +99,4 @@
                1. [해결] 2안으로 해결해서 Lines는 Height에 대해 전혀 모른다.
       2. 메서드를 추가하여 의존성이 생기지 않도록 해결함
          1. Height 객체의 높이를 확인하면서 canInstall과 install 메서드를 추가하여 모두 다 설치되었는지 확인하도록 처리해서 의존성 문제를 끊어냈다.
+
