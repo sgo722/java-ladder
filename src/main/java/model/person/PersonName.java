@@ -1,7 +1,5 @@
 package model.person;
 
-import model.dto.PersonNameDto;
-
 public class PersonName {
     static final int MAX_NAME_LENGTH = 5;
     static final int MIN_NAME_LENGTH = 1;
