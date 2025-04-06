@@ -1,6 +1,8 @@
 package controller;
 
+import model.ExecuteResult;
 import model.Height;
+import model.result.Results;
 import model.line.generator.LineGenerator;
 import model.line.Ladder;
 import model.line.generator.RandomLineGenerator;
@@ -24,6 +26,7 @@ public class LadderGameController {
     public void makeLadder() {
         PersonNames personNames = new PersonNames(inputView.inputPersonNames());
         Height height = new Height(inputView.inputLadderMaxHeight());
+        Results results = new Results(inputView.inputExecuteResult());
         LineGenerator lineGenerator = new RandomLineGenerator(new RandomBooleanGenerator());
 
         Ladder ladder = setLadder(height, personNames, lineGenerator);
