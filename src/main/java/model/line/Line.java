@@ -11,10 +11,18 @@ public class Line {
     }
 
     private void validate(List<Bridge> bridges) {
-        for (int i = 1; i < bridges.size(); i++) {
-            if (bridges.get(i).isConnected() && bridges.get(i - 1).isConnected()) {
-                throw new IllegalArgumentException("[ERROR] 연속된 연결은 불가능합니다");
-            }
+        validateContinuous(bridges);
+    }
+
+    private static void validateContinuous(List<Bridge> bridges) {
+        for (int bridgeIndex = 1; bridgeIndex< bridges.size(); bridgeIndex++) {
+            validateBridgeIndex(bridges, bridgeIndex);
+        }
+    }
+
+    private static void validateBridgeIndex(List<Bridge> bridges, int bridgeIndex) {
+        if (bridges.get(bridgeIndex).isConnected() && bridges.get(bridgeIndex - 1).isConnected()) {
+            throw new IllegalArgumentException("[ERROR] 연속된 연결은 불가능합니다");
         }
     }
 
