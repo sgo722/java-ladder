@@ -25,4 +25,32 @@ class RandomLineGeneratorTest {
         //then
         assertThat(line.exportBridgesForView()).size().isEqualTo(personCount - 1);
     }
+
+    @DisplayName("true만_반환할경우_상태는_교차로_생성된다")
+    @Test
+    void toggleBridgeStatus(){
+        //given
+        BooleanGenerator booleanGenerator = () -> true;
+        RandomLineGenerator randomLineGenerator = new RandomLineGenerator(booleanGenerator);
+        int personCount = 5;
+        //when
+
+        Line line = randomLineGenerator.generate(personCount);
+        //then
+        assertThat(line.exportBridgesForView()).containsExactly(true,false,true,false);
+    }
+
+    @DisplayName("false만_반환할경우_상태는_교차로_생성된다")
+    @Test
+    void noBridge(){
+        //given
+        BooleanGenerator booleanGenerator = () -> false;
+        RandomLineGenerator randomLineGenerator = new RandomLineGenerator(booleanGenerator);
+        int personCount = 5;
+        //when
+
+        Line line = randomLineGenerator.generate(personCount);
+        //then
+        assertThat(line.exportBridgesForView()).containsExactly(false,false,false,false);
+    }
 }

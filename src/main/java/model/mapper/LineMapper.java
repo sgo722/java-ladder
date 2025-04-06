@@ -2,15 +2,15 @@ package model.mapper;
 
 import model.dto.LineDto;
 import model.line.Line;
-import model.line.Lines;
+import model.line.Ladder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class LineMapper {
-    public List<LineDto> toDto(Lines lines){
+    public List<LineDto> toDto(Ladder ladder){
         List<LineDto> lineDtos = new ArrayList<>();
-        for (Line line : lines.getLines()) {
+        for (Line line : ladder.getLines()) {
             lineDtos.add(toDto(line));
         }
 

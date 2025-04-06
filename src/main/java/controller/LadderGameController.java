@@ -2,7 +2,7 @@ package controller;
 
 import model.Height;
 import model.line.generator.LineGenerator;
-import model.line.Lines;
+import model.line.Ladder;
 import model.line.generator.RandomLineGenerator;
 import model.mapper.LineMapper;
 import model.mapper.PersonMapper;
@@ -26,24 +26,24 @@ public class LadderGameController {
         Height height = new Height(inputView.inputLadderMaxHeight());
         LineGenerator lineGenerator = new RandomLineGenerator(new RandomBooleanGenerator());
 
-        Lines lines = setLadder(height, personNames, lineGenerator);
+        Ladder ladder = setLadder(height, personNames, lineGenerator);
 
-        print(personNames, lines);
+        print(personNames, ladder);
     }
 
-    private static Lines setLadder(Height height, PersonNames personNames, LineGenerator lineGenerator) {
-        Lines lines = new Lines();
+    private static Ladder setLadder(Height height, PersonNames personNames, LineGenerator lineGenerator) {
+        Ladder ladder = new Ladder();
 
         while(height.canInstall()) {
-            lines = lines.addLine(personNames.getCount(), lineGenerator);
+            ladder = ladder.addLine(personNames.getCount(), lineGenerator);
             height = height.install();
         }
 
-        return lines;
+        return ladder;
     }
 
-    private void print(PersonNames personNames, Lines lines) {
+    private void print(PersonNames personNames, Ladder ladder) {
         outputView.printPersonNames(new PersonMapper().toDto(personNames));
-        outputView.printLadder(new LineMapper().toDto(lines));
+        outputView.printLadder(new LineMapper().toDto(ladder));
     }
 }
