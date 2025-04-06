@@ -30,6 +30,7 @@ public class LadderGameController {
         LineGenerator lineGenerator = new RandomLineGenerator(new RandomBooleanGenerator());
 
         Ladder ladder = setLadder(height, personNames, lineGenerator);
+        ladder.play();
 
         print(personNames, ladder);
     }

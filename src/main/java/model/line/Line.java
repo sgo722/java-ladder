@@ -31,4 +31,23 @@ public class Line {
                 .map(Bridge::isConnected)
                 .toList();
     }
+
+    public int move(int playerIdx) {
+        if(moveRight(playerIdx)){
+            return playerIdx + 1;
+        }
+        if(moveLeft(playerIdx)){
+            return playerIdx - 1;
+        }
+
+        return playerIdx;
+    }
+
+    private boolean moveRight(int playerIdx) {
+        return bridges.get(playerIdx).isConnected();
+    }
+
+    private boolean moveLeft(int playerIdx) {
+        return playerIdx > 0 && bridges.get(playerIdx - 1).isConnected();
+    }
 }

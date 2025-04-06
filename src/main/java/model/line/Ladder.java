@@ -26,4 +26,23 @@ public class Ladder {
     public List<Line> getLines(){
         return lines;
     }
+
+    public List<Integer> play() {
+        List<Integer> results = new ArrayList<>();
+        for(int player = 0; player < this.lines.size(); player++) {
+            int playerIdx = player;
+            int height = 0;
+            while(height < lines.size()){
+                playerIdx = lines.get(height).move(playerIdx);
+                height++;
+            }
+            results.add(playerIdx);
+        }
+
+        return results;
+    }
+
+    private Line getLine(int player) {
+        return lines.get(player);
+    }
 }
