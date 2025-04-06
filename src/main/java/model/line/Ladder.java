@@ -3,7 +3,9 @@ package model.line;
 import model.line.generator.LineGenerator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Ladder {
     // Line의 일급 컬렉션
@@ -27,22 +29,19 @@ public class Ladder {
         return lines;
     }
 
-    public List<Integer> play() {
-        List<Integer> results = new ArrayList<>();
-        for(int player = 0; player < this.lines.size(); player++) {
-            int playerIdx = player;
+    public Map<Integer, Integer> play(int personCount) {
+        Map<Integer, Integer> results = new HashMap<>();
+
+        for(int playerIdx = 0; playerIdx < personCount; playerIdx++) {
+            int arriveIdx = playerIdx;
             int height = 0;
             while(height < lines.size()){
-                playerIdx = lines.get(height).move(playerIdx);
+                arriveIdx = lines.get(height).move(arriveIdx);
                 height++;
             }
-            results.add(playerIdx);
+            results.put(playerIdx, arriveIdx);
         }
 
         return results;
-    }
-
-    private Line getLine(int player) {
-        return lines.get(player);
     }
 }

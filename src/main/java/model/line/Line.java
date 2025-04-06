@@ -44,7 +44,7 @@ public class Line {
     }
 
     private boolean moveRight(int playerIdx) {
-        return bridges.get(playerIdx).isConnected();
+        return playerIdx < bridges.size() && bridges.get(playerIdx).isConnected();
     }
 
     private boolean moveLeft(int playerIdx) {

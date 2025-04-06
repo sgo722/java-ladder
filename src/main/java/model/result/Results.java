@@ -1,5 +1,8 @@
 package model.result;
 
+import model.person.PersonName;
+import model.person.PersonNames;
+
 import java.util.*;
 
 public class Results {
@@ -29,5 +32,23 @@ public class Results {
         }
 
         return parseResults;
+    }
+
+    public Map<String, String> calculate(Map<Integer, Integer> personNameIndexToResultIndex, PersonNames personNames) {
+        Map<String, String> personNameToResult = new HashMap<>();
+
+        for(Integer personIdx : personNameIndexToResultIndex.keySet()){
+            String personName = personNames.getPersonNames().get(personIdx).exportNameForView();
+            String result = results.get(personNameIndexToResultIndex.get(personIdx)).exportResultForView();
+            personNameToResult.put(personName,result);
+        }
+
+        return personNameToResult;
+    }
+
+    public List<String> exportResultForView(){
+        return results.stream()
+                .map(Result::exportResultForView)
+                .toList();
     }
 }

@@ -1,7 +1,8 @@
 package controller;
 
-import model.ExecuteResult;
 import model.Height;
+import model.person.PersonName;
+import model.result.Result;
 import model.result.Results;
 import model.line.generator.LineGenerator;
 import model.line.Ladder;
@@ -13,6 +14,8 @@ import model.util.RandomBooleanGenerator;
 import view.InputView;
 import view.OutputView;
 
+import java.util.Map;
+
 public class LadderGameController {
 
     private final InputView inputView;
@@ -23,16 +26,30 @@ public class LadderGameController {
         this.outputView = outputView;
     }
 
-    public void makeLadder() {
+    public void execute() {
         PersonNames personNames = new PersonNames(inputView.inputPersonNames());
-        Height height = new Height(inputView.inputLadderMaxHeight());
         Results results = new Results(inputView.inputExecuteResult());
+        Height height = new Height(inputView.inputLadderMaxHeight());
         LineGenerator lineGenerator = new RandomLineGenerator(new RandomBooleanGenerator());
 
         Ladder ladder = setLadder(height, personNames, lineGenerator);
-        ladder.play();
 
-        print(personNames, ladder);
+        print(personNames, ladder, results);
+
+        Map<Integer, Integer> personIdxToResultsIdx = ladder.play(personNames.getCount());
+        Map<String, String> personNameToResult = results.calculate(personIdxToResultsIdx, personNames);
+
+        boolean flag = true;
+        while(flag){
+            String targetName = inputView.inputTargetName();
+            if(targetName.equals("all")){
+                flag = false;
+                outputView.printResultAll(personNameToResult);
+            }
+            if(!targetName.equals("all")) {
+                outputView.printResultTargetName(personNameToResult.get(targetName));
+            }
+        }
     }
 
     private static Ladder setLadder(Height height, PersonNames personNames, LineGenerator lineGenerator) {
@@ -46,8 +63,9 @@ public class LadderGameController {
         return ladder;
     }
 
-    private void print(PersonNames personNames, Ladder ladder) {
+    private void print(PersonNames personNames, Ladder ladder, Results results) {
         outputView.printPersonNames(new PersonMapper().toDto(personNames));
         outputView.printLadder(new LineMapper().toDto(ladder));
+        outputView.printResult(results.exportResultForView());
     }
 }

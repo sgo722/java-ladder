@@ -1,5 +1,7 @@
 package model.person;
 
+import model.result.Results;
+
 import java.util.*;
 
 public class PersonNames {
