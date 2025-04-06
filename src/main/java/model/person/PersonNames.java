@@ -1,7 +1,5 @@
 package model.person;
 
-import model.dto.PersonNameDto;
-
 import java.util.*;
 
 public class PersonNames {
