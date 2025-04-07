@@ -2,6 +2,7 @@ package view;
 
 import model.dto.LineDto;
 import model.dto.PersonNameDto;
+import model.dto.RewardDto;
 
 import java.util.List;
 import java.util.Map;
@@ -58,9 +59,9 @@ public class OutputView {
         System.out.println(sb);
     }
 
-    public void printResult(List<String> results) {
-        for(String result : results) {
-            System.out.print(String.format("%5s ", result));
+    public void printRewards(List<RewardDto> rewards) {
+        for (RewardDto reward : rewards) {
+            System.out.print(String.format("%5s ", reward.getReward()));
         }
         System.out.println();
     }

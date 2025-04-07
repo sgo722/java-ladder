@@ -29,8 +29,8 @@ public class Ladder {
         return lines;
     }
 
-    public Map<Integer, Integer> play(int personCount) {
-        Map<Integer, Integer> results = new HashMap<>();
+    public List<Integer> play(int personCount) {
+        List<Integer> results = new ArrayList<>();
 
         for(int playerIdx = 0; playerIdx < personCount; playerIdx++) {
             int arriveIdx = playerIdx;
@@ -39,7 +39,7 @@ public class Ladder {
                 arriveIdx = lines.get(height).move(arriveIdx);
                 height++;
             }
-            results.put(playerIdx, arriveIdx);
+            results.add(arriveIdx);
         }
 
         return results;

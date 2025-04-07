@@ -1,71 +1,55 @@
 package controller;
 
-import model.Height;
-import model.person.PersonName;
-import model.result.Result;
-import model.result.Results;
-import model.line.generator.LineGenerator;
-import model.line.Ladder;
+import model.game.LadderGame;
+import model.game.LadderGameFactory;
+import model.line.LadderFactory;
 import model.line.generator.RandomLineGenerator;
 import model.mapper.LineMapper;
 import model.mapper.PersonMapper;
-import model.person.PersonNames;
-import model.util.RandomBooleanGenerator;
+import model.mapper.RewardsMapper;
 import view.InputView;
 import view.OutputView;
-
-import java.util.Map;
 
 public class LadderGameController {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final LadderGameFactory ladderGameFactory;
 
     public LadderGameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.ladderGameFactory = new LadderGameFactory(new LadderFactory(), new RandomLineGenerator());
     }
 
-    public void execute() {
-        PersonNames personNames = new PersonNames(inputView.inputPersonNames());
-        Results results = new Results(inputView.inputExecuteResult());
-        Height height = new Height(inputView.inputLadderMaxHeight());
-        LineGenerator lineGenerator = new RandomLineGenerator(new RandomBooleanGenerator());
+    public void run() {
+        // 사다리 생성
+        LadderGame ladderGame = ladderGameFactory.create(inputView.inputPersonNames(), inputView.inputResults(), inputView.inputLadderMaxHeight());
 
-        Ladder ladder = setLadder(height, personNames, lineGenerator);
+        // 사다리 출력
+        printStatus(ladderGame);
 
-        print(personNames, ladder, results);
+        // 사다리 게임 실행
+        ladderGame.play();
 
-        Map<Integer, Integer> personIdxToResultsIdx = ladder.play(personNames.getCount());
-        Map<String, String> personNameToResult = results.calculate(personIdxToResultsIdx, personNames);
-
-        boolean flag = true;
-        while(flag){
+        // 사다리 결과 출력
+        while(true){
             String targetName = inputView.inputTargetName();
-            if(targetName.equals("all")){
-                flag = false;
-                outputView.printResultAll(personNameToResult);
+            if(printAll(targetName)) {
+                outputView.printResultAll(ladderGame.getAllResults());
+                return;
             }
-            if(!targetName.equals("all")) {
-                outputView.printResultTargetName(personNameToResult.get(targetName));
-            }
+            outputView.printResultTargetName(ladderGame.getResultFor(targetName));
         }
     }
 
-    private static Ladder setLadder(Height height, PersonNames personNames, LineGenerator lineGenerator) {
-        Ladder ladder = new Ladder();
-
-        while(height.canInstall()) {
-            ladder = ladder.addLine(personNames.getCount(), lineGenerator);
-            height = height.install();
-        }
-
-        return ladder;
+    private void printStatus(LadderGame ladderGame) {
+        outputView.printPersonNames(new PersonMapper().toDto(ladderGame.getPersonNames()));
+        outputView.printLadder(new LineMapper().toDto(ladderGame.getLadder()));
+        outputView.printRewards(new RewardsMapper().toDto(ladderGame.getRewards()));
     }
 
-    private void print(PersonNames personNames, Ladder ladder, Results results) {
-        outputView.printPersonNames(new PersonMapper().toDto(personNames));
-        outputView.printLadder(new LineMapper().toDto(ladder));
-        outputView.printResult(results.exportResultForView());
+    private static boolean printAll(String targetName) {
+        return targetName.equals("all");
     }
 }

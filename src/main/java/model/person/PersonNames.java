@@ -1,7 +1,5 @@
 package model.person;
 
-import model.result.Results;
-
 import java.util.*;
 
 public class PersonNames {
@@ -48,7 +46,9 @@ public class PersonNames {
         return personNames.size();
     }
 
-    public List<PersonName> getPersonNames() {
-        return Collections.unmodifiableList(personNames);
+    public List<String> getPersonNames() {
+        return personNames.stream()
+                .map(PersonName::exportNameForView)
+                .toList();
     }
 }

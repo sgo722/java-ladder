@@ -2,13 +2,13 @@ package model.result;
 
 import java.util.Objects;
 
-public class Result {
+public class Reward {
 
-    private final String result;
+    private final String name;
 
-    public Result(String result) {
-        validate(result);
-        this.result = result;
+    public Reward(String name) {
+        validate(name);
+        this.name = name;
     }
 
     private void validate(String result) {
@@ -24,16 +24,16 @@ public class Result {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Result result1 = (Result) o;
-        return Objects.equals(result, result1.result);
+        Reward reward1 = (Reward) o;
+        return Objects.equals(name, reward1.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(result);
+        return Objects.hashCode(name);
     }
 
     public String exportResultForView() {
-        return result;
+        return name;
     }
 }
