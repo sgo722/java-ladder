@@ -3,7 +3,6 @@ package controller;
 import model.game.LadderGame;
 import model.game.LadderGameFactory;
 import model.line.LadderFactory;
-import model.line.generator.RandomBridgeGenerator;
 import model.mapper.LineMapper;
 import model.mapper.PersonMapper;
 import model.mapper.RewardsMapper;

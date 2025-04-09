@@ -1,7 +1,6 @@
 package model.game;
 
 import model.line.LadderFactory;
-import model.line.generator.RandomBridgeGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

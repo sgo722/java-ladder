@@ -1,7 +1,6 @@
 package model.line.generator;
 
 import model.line.Bridge;
-import model.line.Line;
 import model.util.BooleanGenerator;
 import model.util.RandomBooleanGenerator;
 

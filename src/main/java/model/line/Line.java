@@ -3,7 +3,6 @@ package model.line;
 import model.line.generator.BridgeGenerator;
 import model.line.generator.RandomBridgeGenerator;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
