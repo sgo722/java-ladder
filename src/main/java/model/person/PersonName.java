@@ -1,6 +1,6 @@
 package model.person;
 
-import model.dto.PersonNameDto;
+import java.util.Objects;
 
 public class PersonName {
     static final int MAX_NAME_LENGTH = 5;
@@ -32,5 +32,17 @@ public class PersonName {
 
     public String exportNameForView(){
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        PersonName that = (PersonName) o;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 }

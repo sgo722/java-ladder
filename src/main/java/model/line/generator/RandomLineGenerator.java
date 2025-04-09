@@ -3,17 +3,14 @@ package model.line.generator;
 import model.line.Bridge;
 import model.line.Line;
 import model.util.BooleanGenerator;
+import model.util.RandomBooleanGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RandomLineGenerator implements LineGenerator {
 
-    private final BooleanGenerator booleanGenerator;
-
-    public RandomLineGenerator(BooleanGenerator booleanGenerator) {
-        this.booleanGenerator = booleanGenerator;
-    }
+    private final BooleanGenerator booleanGenerator = new RandomBooleanGenerator();
 
     public Line generate(int personCount) {
         List<Bridge> bridges = new ArrayList<>();

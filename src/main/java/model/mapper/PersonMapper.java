@@ -12,14 +12,14 @@ public class PersonMapper {
     public List<PersonNameDto> toDto(PersonNames personNames) {
         List<PersonNameDto> personNameDtos = new ArrayList<>();
 
-        for(PersonName personName : personNames.getPersonNames()) {
+        for(String personName : personNames.getPersonNames()) {
             personNameDtos.add(toDto(personName));
         }
         return personNameDtos;
 
     }
 
-    private PersonNameDto toDto(PersonName personName) {
-        return new PersonNameDto(personName.exportNameForView());
+    private PersonNameDto toDto(String personName) {
+        return new PersonNameDto(personName);
     }
 }
