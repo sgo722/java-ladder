@@ -1,7 +1,7 @@
 package model.game;
 
 import model.line.LadderFactory;
-import model.line.generator.RandomLineGenerator;
+import model.line.generator.RandomBridgeGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +13,7 @@ class LadderGameTest {
     @Test
     void differentCount(){
         //given
-        LadderGameFactory ladderGameFactory = new LadderGameFactory(new LadderFactory(), new RandomLineGenerator());
+        LadderGameFactory ladderGameFactory = new LadderGameFactory(new LadderFactory());
         String PersonNameStr = "양,준";
         String resultStr = "꽝";
         String heightStr = "4";
@@ -27,7 +27,7 @@ class LadderGameTest {
     @Test
     void beforePlayResultForException(){
         //given
-        LadderGameFactory ladderGameFactory = new LadderGameFactory(new LadderFactory(), new RandomLineGenerator());
+        LadderGameFactory ladderGameFactory = new LadderGameFactory(new LadderFactory());
         String PersonNameStr = "양,준";
         String resultStr = "꽝,5000";
         String heightStr = "4";
@@ -43,7 +43,7 @@ class LadderGameTest {
     @Test
     void beforePlayResultAllException(){
         //given
-        LadderGameFactory ladderGameFactory = new LadderGameFactory(new LadderFactory(), new RandomLineGenerator());
+        LadderGameFactory ladderGameFactory = new LadderGameFactory(new LadderFactory());
         String PersonNameStr = "양,준";
         String resultStr = "꽝,5000";
         String heightStr = "4";
@@ -57,7 +57,7 @@ class LadderGameTest {
     @Test
     void afterPlaySaveResult(){
         //given
-        LadderGameFactory ladderGameFactory = new LadderGameFactory(new LadderFactory(), new RandomLineGenerator());
+        LadderGameFactory ladderGameFactory = new LadderGameFactory(new LadderFactory());
         String PersonNameStr = "양,준";
         String resultStr = "꽝,5000";
         String heightStr = "4";

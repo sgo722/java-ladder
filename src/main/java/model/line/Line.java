@@ -1,11 +1,29 @@
 package model.line;
 
+import model.line.generator.BridgeGenerator;
+import model.line.generator.RandomBridgeGenerator;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
     private final List<Bridge> bridges;
+    private final BridgeGenerator bridgeGenerator;
+
+    public Line(int personCount){
+        bridgeGenerator = new RandomBridgeGenerator();
+        bridges = bridgeGenerator.generate(personCount);
+        validate(bridges);
+    }
 
     public Line(List<Bridge> bridges) {
+        bridgeGenerator = new RandomBridgeGenerator();
+        validate(bridges);
+        this.bridges = bridges;
+    }
+
+    public Line(List<Bridge> bridges, BridgeGenerator bridgeGenerator) {
+        this.bridgeGenerator = bridgeGenerator;
         validate(bridges);
         this.bridges = bridges;
     }

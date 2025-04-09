@@ -191,6 +191,7 @@
 6. 의존성 주입
    1. LineGenerator는 라인을 만드는 객체만 알면 되지 않을까? LadderGameController가 알아야할까?
       1. 컨트롤러부터 주입해줄 이유는 없는 것 같습니다. 언제부터 주입할 지에 대해 고민을 했는데, 객체가 알아야하는 시점부터 넣어주면 되겠다고 생각합니다.
+      2. LineGenerator -> BridgeGenerator로 이름을 변경하고, Line이 BridgeGenerator를 주입받도록 수정하였습니다.
 
 7. 테스트
    1. 테스트는 어디까지 생각하고 짜야할까?

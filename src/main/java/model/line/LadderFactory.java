@@ -1,16 +1,15 @@
 package model.line;
 
 import model.Height;
-import model.line.generator.LineGenerator;
 import model.person.PersonNames;
 
 public class LadderFactory {
 
-    public Ladder create(PersonNames personNames, Height height, LineGenerator lineGenerator) {
+    public Ladder create(PersonNames personNames, Height height) {
         Ladder ladder = new Ladder();
 
         while(height.canInstall()) {
-            ladder = ladder.addLine(personNames.getCount(), lineGenerator);
+            ladder = ladder.addLine(personNames.getCount());
             height = height.install();
         }
 

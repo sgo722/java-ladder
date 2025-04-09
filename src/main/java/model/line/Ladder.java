@@ -1,7 +1,5 @@
 package model.line;
 
-import model.line.generator.LineGenerator;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +15,9 @@ public class Ladder {
         this.lines = lines;
     }
 
-    public Ladder addLine(int personCount, LineGenerator lineGenerator) {
+    public Ladder addLine(int personCount) {
         List<Line> newLines = new ArrayList<>(this.lines);
-        newLines.add(lineGenerator.generate(personCount));
+        newLines.add(new Line(personCount));
         return new Ladder(newLines);
     }
 

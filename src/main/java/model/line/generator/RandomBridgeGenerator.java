@@ -8,25 +8,25 @@ import model.util.RandomBooleanGenerator;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RandomLineGenerator implements LineGenerator {
+public class RandomBridgeGenerator implements BridgeGenerator {
 
     private final BooleanGenerator booleanGenerator;
 
-    public RandomLineGenerator() {
+    public RandomBridgeGenerator() {
         this.booleanGenerator = new RandomBooleanGenerator();
     }
 
-    public RandomLineGenerator(BooleanGenerator booleanGenerator) {
+    public RandomBridgeGenerator(BooleanGenerator booleanGenerator) {
         this.booleanGenerator = booleanGenerator;
     }
 
-    public Line generate(int personCount) {
+    public List<Bridge> generate(int personCount) {
         List<Bridge> bridges = new ArrayList<>();
 
         while(bridges.size() < personCount - 1){
             addBridge(bridges);
         }
-        return new Line(bridges);
+        return bridges;
     }
 
     private void addBridge(List<Bridge> bridges) {

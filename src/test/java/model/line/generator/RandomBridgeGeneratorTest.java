@@ -1,27 +1,28 @@
 package model.line.generator;
 
+import model.line.Bridge;
 import model.line.Line;
 import model.util.BooleanGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.function.BooleanSupplier;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
-class RandomLineGeneratorTest {
+class RandomBridgeGeneratorTest {
 
     @DisplayName("연결지점은_참여자보다_1개_적은_수만큼_생성된다")
     @Test
     void connectPointlessThanPersonCount(){
         //given
         BooleanGenerator booleanGenerator = () -> true;
-        RandomLineGenerator randomLineGenerator = new RandomLineGenerator();
+        RandomBridgeGenerator randomLineGenerator = new RandomBridgeGenerator();
         int personCount = 5;
+        List<Bridge> bridges = randomLineGenerator.generate(personCount);
         //when
 
-        Line line = randomLineGenerator.generate(personCount);
+        Line line = new Line(bridges, randomLineGenerator);
         //then
         assertThat(line.exportBridgesForView()).size().isEqualTo(personCount - 1);
     }
@@ -31,11 +32,12 @@ class RandomLineGeneratorTest {
     void toggleBridgeStatus(){
         //given
         BooleanGenerator booleanGenerator = () -> true;
-        RandomLineGenerator randomLineGenerator = new RandomLineGenerator(booleanGenerator);
+        RandomBridgeGenerator randomLineGenerator = new RandomBridgeGenerator(booleanGenerator);
         int personCount = 5;
+        List<Bridge> bridges = randomLineGenerator.generate(personCount);
         //when
 
-        Line line = randomLineGenerator.generate(personCount);
+        Line line = new Line(bridges, randomLineGenerator);
         //then
         assertThat(line.exportBridgesForView()).containsExactly(true,false,true,false);
     }
@@ -45,11 +47,12 @@ class RandomLineGeneratorTest {
     void noBridge(){
         //given
         BooleanGenerator booleanGenerator = () -> false;
-        RandomLineGenerator randomLineGenerator = new RandomLineGenerator(booleanGenerator);
+        RandomBridgeGenerator randomLineGenerator = new RandomBridgeGenerator(booleanGenerator);
         int personCount = 5;
+        List<Bridge> bridges = randomLineGenerator.generate(personCount);
         //when
 
-        Line line = randomLineGenerator.generate(personCount);
+        Line line = new Line(bridges, randomLineGenerator);
         //then
         assertThat(line.exportBridgesForView()).containsExactly(false,false,false,false);
     }

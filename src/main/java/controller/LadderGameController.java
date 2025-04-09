@@ -3,7 +3,7 @@ package controller;
 import model.game.LadderGame;
 import model.game.LadderGameFactory;
 import model.line.LadderFactory;
-import model.line.generator.RandomLineGenerator;
+import model.line.generator.RandomBridgeGenerator;
 import model.mapper.LineMapper;
 import model.mapper.PersonMapper;
 import model.mapper.RewardsMapper;
@@ -19,7 +19,7 @@ public class LadderGameController {
     public LadderGameController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
         this.outputView = outputView;
-        this.ladderGameFactory = new LadderGameFactory(new LadderFactory(), new RandomLineGenerator());
+        this.ladderGameFactory = new LadderGameFactory(new LadderFactory());
     }
 
     public void run() {
