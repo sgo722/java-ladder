@@ -10,7 +10,15 @@ import java.util.List;
 
 public class RandomLineGenerator implements LineGenerator {
 
-    private final BooleanGenerator booleanGenerator = new RandomBooleanGenerator();
+    private final BooleanGenerator booleanGenerator;
+
+    public RandomLineGenerator() {
+        this.booleanGenerator = new RandomBooleanGenerator();
+    }
+
+    public RandomLineGenerator(BooleanGenerator booleanGenerator) {
+        this.booleanGenerator = booleanGenerator;
+    }
 
     public Line generate(int personCount) {
         List<Bridge> bridges = new ArrayList<>();

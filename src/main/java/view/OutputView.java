@@ -27,10 +27,9 @@ public class OutputView {
             for(Boolean bridge : linesDtos.get(lineIdx).getBridges()){
                 if(bridge){
                     sb.append("|-----");
+                    continue;
                 }
-                if(!bridge){
-                    sb.append("|     ");
-                }
+                sb.append("|     ");
             }
             sb.append("|");
             if(lineIdx != linesDtos.size() - 1) {

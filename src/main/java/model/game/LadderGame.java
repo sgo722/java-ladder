@@ -17,13 +17,22 @@ public class LadderGame {
 
     private Map<String, String> cachedPersonNameToResult;
 
-
     public LadderGame(PersonNames personNames, Rewards rewards, Ladder ladder) {
+        validate(personNames, rewards);
         this.personNames = personNames;
         this.rewards = rewards;
         this.ladder = ladder;
     }
 
+    private void validate(PersonNames personNames, Rewards rewards) {
+        validateCount(personNames, rewards);
+    }
+
+    private void validateCount(PersonNames personNames, Rewards rewards) {
+        if(personNames.getCount() != rewards.getCount()){
+            throw new IllegalArgumentException("[ERROR] 사람 수와 보상의 개수는 일치해야합니다");
+        }
+    }
 
     public void play() {
         List<Integer> play = ladder.play(this.personNames.getCount());
@@ -32,7 +41,7 @@ public class LadderGame {
 
     public String getResultFor(String targetName) {
         if(cachedPersonNameToResult == null){
-            throw new IllegalStateException("[ERROR] 게임이 아직 실행되지 않았습니다");
+            throw new IllegalArgumentException("[ERROR] 게임이 아직 실행되지 않았습니다");
         }
         if(!cachedPersonNameToResult.containsKey(targetName)){
             return NOT_FOUND_USER;
@@ -43,7 +52,7 @@ public class LadderGame {
 
     public Map<String, String> getAllResults() {
         if(cachedPersonNameToResult == null){
-            throw new IllegalStateException("[ERROR] 게임이 아직 실행되지 않았습니다");
+            throw new IllegalArgumentException("[ERROR] 게임이 아직 실행되지 않았습니다");
         }
 
         return cachedPersonNameToResult;

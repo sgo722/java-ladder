@@ -50,4 +50,8 @@ public class Rewards {
                 .map(Reward::exportResultForView)
                 .toList();
     }
+
+    public int getCount(){
+        return rewards.size();
+    }
 }

@@ -17,7 +17,7 @@ class RandomLineGeneratorTest {
     void connectPointlessThanPersonCount(){
         //given
         BooleanGenerator booleanGenerator = () -> true;
-        RandomLineGenerator randomLineGenerator = new RandomLineGenerator(booleanGenerator);
+        RandomLineGenerator randomLineGenerator = new RandomLineGenerator();
         int personCount = 5;
         //when
 

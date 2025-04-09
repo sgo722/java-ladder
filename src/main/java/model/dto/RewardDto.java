@@ -1,7 +1,5 @@
 package model.dto;
 
-import java.util.List;
-
 public class RewardDto {
     private final String reward;
 
