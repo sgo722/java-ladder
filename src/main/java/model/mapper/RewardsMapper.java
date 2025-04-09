@@ -1,7 +1,6 @@
 package model.mapper;
 
 import model.dto.RewardDto;
-import model.result.Reward;
 import model.result.Rewards;
 
 import java.util.ArrayList;

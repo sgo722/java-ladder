@@ -1,7 +1,6 @@
 package model.mapper;
 
 import model.dto.PersonNameDto;
-import model.person.PersonName;
 import model.person.PersonNames;
 
 import java.util.ArrayList;
