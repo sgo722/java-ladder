@@ -196,3 +196,8 @@
 7. 테스트
    1. 테스트는 어디까지 생각하고 짜야할까?
       1. 라이브러리에 대한 검증은 하지 않아도 된다고 생각합니다.
+
+8. 람다식 / 함수형 인터페이스
+   1. BooleanSupplier 적용 / 기존 BooleanGenerator 인터페이스 삭제
+      1. util에 BooleanGenerator 인터페이스와 RandomBooleanGenerator를 삭제하고 자바에서 제공하는 BooleanSupplier를 제공하여 값을 입력받았습니다.
+      2. 테스트 코드에서도 함수형 인터페이스 주입하는 방식을 람다식을 이용해 익명클래스를 간단하게 만드는 방법을 채택했습니다.

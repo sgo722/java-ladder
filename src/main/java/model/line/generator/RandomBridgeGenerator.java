@@ -1,21 +1,21 @@
 package model.line.generator;
 
 import model.line.Bridge;
-import model.util.BooleanGenerator;
-import model.util.RandomBooleanGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.BooleanSupplier;
 
 public class RandomBridgeGenerator implements BridgeGenerator {
 
-    private final BooleanGenerator booleanGenerator;
+    private final BooleanSupplier booleanGenerator;
 
     public RandomBridgeGenerator() {
-        this.booleanGenerator = new RandomBooleanGenerator();
+        booleanGenerator = () -> ThreadLocalRandom.current().nextBoolean();
     }
 
-    public RandomBridgeGenerator(BooleanGenerator booleanGenerator) {
+    public RandomBridgeGenerator(BooleanSupplier booleanGenerator) {
         this.booleanGenerator = booleanGenerator;
     }
 
@@ -33,7 +33,7 @@ public class RandomBridgeGenerator implements BridgeGenerator {
             bridges.add(Bridge.NOT_CONNECTED);
             return;
         }
-        bridges.add(Bridge.from(booleanGenerator.nextBoolean()));
+        bridges.add(Bridge.from(booleanGenerator.getAsBoolean()));
     }
 
     private boolean cannotConnectNextBridge(List<Bridge> bridges) {

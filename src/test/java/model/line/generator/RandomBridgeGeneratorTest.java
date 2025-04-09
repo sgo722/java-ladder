@@ -2,7 +2,6 @@ package model.line.generator;
 
 import model.line.Bridge;
 import model.line.Line;
-import model.util.BooleanGenerator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -16,8 +15,7 @@ class RandomBridgeGeneratorTest {
     @Test
     void connectPointlessThanPersonCount(){
         //given
-        BooleanGenerator booleanGenerator = () -> true;
-        RandomBridgeGenerator randomLineGenerator = new RandomBridgeGenerator();
+        RandomBridgeGenerator randomLineGenerator = new RandomBridgeGenerator(() -> true);
         int personCount = 5;
         List<Bridge> bridges = randomLineGenerator.generate(personCount);
         //when
@@ -31,8 +29,7 @@ class RandomBridgeGeneratorTest {
     @Test
     void toggleBridgeStatus(){
         //given
-        BooleanGenerator booleanGenerator = () -> true;
-        RandomBridgeGenerator randomLineGenerator = new RandomBridgeGenerator(booleanGenerator);
+        RandomBridgeGenerator randomLineGenerator = new RandomBridgeGenerator(() -> true);
         int personCount = 5;
         List<Bridge> bridges = randomLineGenerator.generate(personCount);
         //when
@@ -46,8 +43,7 @@ class RandomBridgeGeneratorTest {
     @Test
     void noBridge(){
         //given
-        BooleanGenerator booleanGenerator = () -> false;
-        RandomBridgeGenerator randomLineGenerator = new RandomBridgeGenerator(booleanGenerator);
+        RandomBridgeGenerator randomLineGenerator = new RandomBridgeGenerator(() -> false);
         int personCount = 5;
         List<Bridge> bridges = randomLineGenerator.generate(personCount);
         //when
