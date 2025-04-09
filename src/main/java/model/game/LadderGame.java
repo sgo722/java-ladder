@@ -15,7 +15,7 @@ public class LadderGame {
     private final Rewards rewards;
     private final Ladder ladder;
 
-    private Map<String, String> cachedPersonNameToResult;
+    private Map<String, String> personNameToResult;
 
     public LadderGame(PersonNames personNames, Rewards rewards, Ladder ladder) {
         validate(personNames, rewards);
@@ -36,26 +36,26 @@ public class LadderGame {
 
     public void play() {
         List<Integer> play = ladder.play(this.personNames.getCount());
-        cachedPersonNameToResult = rewards.calculate(play, personNames);
+        personNameToResult = rewards.calculate(play, personNames);
     }
 
     public String getResultFor(String targetName) {
-        if(cachedPersonNameToResult == null){
+        if(personNameToResult == null){
             throw new IllegalArgumentException("[ERROR] 게임이 아직 실행되지 않았습니다");
         }
-        if(!cachedPersonNameToResult.containsKey(targetName)){
+        if(!personNameToResult.containsKey(targetName)){
             return NOT_FOUND_USER;
         }
 
-        return cachedPersonNameToResult.get(targetName);
+        return personNameToResult.get(targetName);
     }
 
     public Map<String, String> getAllResults() {
-        if(cachedPersonNameToResult == null){
+        if(personNameToResult == null){
             throw new IllegalArgumentException("[ERROR] 게임이 아직 실행되지 않았습니다");
         }
 
-        return cachedPersonNameToResult;
+        return personNameToResult;
     }
 
     public PersonNames getPersonNames() {
