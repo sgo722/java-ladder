@@ -1,0 +1,39 @@
+package model.result;
+
+import java.util.Objects;
+
+public class Reward {
+
+    private final String name;
+
+    public Reward(String name) {
+        validate(name);
+        this.name = name;
+    }
+
+    private void validate(String result) {
+        validateNotBlank(result);
+    }
+
+    private void validateNotBlank(String result) {
+        if (result == null || result.trim().isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 빈 값이나 공백을 입력할 수 없습니다.");
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Reward reward1 = (Reward) o;
+        return Objects.equals(name, reward1.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
+    }
+
+    public String exportResultForView() {
+        return name;
+    }
+}

@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LineTest {
 
-    @DisplayName("연속된 연결이 있는 경우 예외가 발생한다")
+    @DisplayName("연속된_연결이_있는_경우_예외가_발생한다")
     @Test
     void overlap(){
         //given
